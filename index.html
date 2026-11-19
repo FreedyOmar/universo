@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050713">
+  <title>Un universo llamado nosotros ✦</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="space-noise" aria-hidden="true"></div>
+  <div class="star-layer star-layer-one" aria-hidden="true"></div>
+  <div class="star-layer star-layer-two" aria-hidden="true"></div>
+  <div class="twinkles" id="twinkles" aria-hidden="true"></div>
+  <div class="shooting-layer" id="shootingLayer" aria-hidden="true"></div>
+  <div class="nebula nebula-one" aria-hidden="true"></div>
+  <div class="nebula nebula-two" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Inicio">
+      <span class="brand-mark">✦</span>
+      <span>UN UNIVERSO <i>LLAMADO NOSOTROS</i></span>
+    </a>
+    <button class="sound-toggle" id="soundToggle" type="button" aria-label="Activar música">
+      <span class="sound-icon">♫</span><span class="sound-label">SONIDO</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="intro-screen" id="introScreen">
+      <div class="intro-copy">
+        <p class="eyebrow">UN LUGAR HECHO DE RECUERDOS</p>
+        <h1>Todo un universo<br><em>comienza contigo.</em></h1>
+        <p class="intro-subtitle">Hay historias que merecen su propia galaxia.</p>
+      </div>
+      <div class="solar-stage intro-stage" id="introStage">
+        <div class="sun-pulse"></div>
+        <div class="sun-pulse delay"></div>
+        <button class="sun sun-intro" id="firstSun" type="button" aria-label="Descubrir el primer recuerdo">
+          <span class="sun-corona"></span>
+          <span class="sun-core"></span>
+          <span class="sun-glint"></span>
+        </button>
+        <span class="sun-hint" id="sunHint">TOCA LA ESTRELLA</span>
+      </div>
+      <p class="intro-footer">Una pequeña aventura para alguien extraordinaria <span>♡</span></p>
+    </section>
+
+    <section class="universe-screen hidden" id="universeScreen">
+      <div class="universe-heading">
+        <p class="eyebrow">NUESTRO PEQUEÑO COSMOS</p>
+        <h2>Un universo <em>por descubrir.</em></h2>
+        <p>Entra en cada planeta, uno por uno. Al terminar un recuerdo, aparecerá el siguiente.</p>
+      </div>
+      <div class="solar-stage universe-stage" id="universeStage">
+        <div class="orbit orbit-1" data-orbit="1"></div>
+        <div class="orbit orbit-2" data-orbit="2"></div>
+        <div class="orbit orbit-3" data-orbit="3"></div>
+        <div class="orbit orbit-4" data-orbit="4"></div>
+        <div class="sun sun-center" aria-hidden="true">
+          <span class="sun-corona"></span><span class="sun-core"></span><span class="sun-glint"></span>
+        </div>
+        <div class="planet-container" id="planetContainer"></div>
+      </div>
+      <div class="universe-footer">
+        <span class="legend"><i class="legend-dot"></i> <b id="visitedCount">0</b> / 24 recuerdos descubiertos</span>
+        <span class="mobile-hint">Toca un planeta para entrar</span>
+        <button id="finalSurprise" class="final-link" type="button">Una última sorpresa <span>↗</span></button>
+      </div>
+    </section>
+  </main>
+
+  <div class="memory-modal" id="memoryModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="true"></div>
+    <article class="memory-card" id="memoryCard" role="dialog" aria-modal="true" aria-labelledby="memoryTitle">
+      <button class="modal-close" id="modalClose" type="button" aria-label="Cerrar">×</button>
+      <div class="memory-image-wrap">
+        <img id="memoryImage" src="fotos/recuerdo-01.jpg" alt="Un recuerdo especial">
+        <div class="image-placeholder" id="imagePlaceholder">
+          <span>✦</span><small>AQUÍ VA UNA DE NUESTRAS FOTOS</small>
+        </div>
+        <div class="memory-orb planet-skin type-0" id="memoryOrb"><span class="surface"></span></div>
+      </div>
+      <div class="memory-content">
+        <p class="eyebrow" id="memoryEyebrow">RECUERDO 01 · NUESTRO UNIVERSO</p>
+        <h2 id="memoryTitle">Un instante para guardar.</h2>
+        <p id="memoryText">Hay momentos que se quedan brillando dentro de nosotros.</p>
+        <div class="memory-progress" aria-hidden="true"><i id="progressBar"></i></div>
+        <div class="memory-actions">
+          <button class="prev-memory" id="prevMemory" type="button" aria-label="Recuerdo anterior">←</button>
+          <span class="memory-counter" id="memoryCounter">01 / 24</span>
+          <span class="memory-hint" id="memoryHint">Cierra la tarjeta para descubrir el siguiente planeta</span>
+          <button class="next-memory" id="nextMemory" type="button">Continuar <span>→</span></button>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="final-modal" id="finalModal" aria-hidden="true">
+    <div class="modal-backdrop" data-final-close="true"></div>
+    <div class="final-hearts" id="finalHearts" aria-hidden="true"></div>
+    <div class="final-message" role="dialog" aria-modal="true">
+      <button class="modal-close" id="finalClose" type="button" aria-label="Cerrar">×</button>
+      <div class="final-star">✧</div>
+      <p class="eyebrow">MI LUGAR FAVORITO EN EL UNIVERSO</p>
+      <h2>Entre millones de estrellas,<br><em>mi coincidencia favorita eres tú.</em></h2>
+      <p id="finalText">Le doy gracias a Dios por tu vida, por la oportunidad de coincidir contigo y por cada recuerdo que seguimos construyendo. Si pudiera elegir entre todos los universos, volvería a elegir aquel en el que puedo encontrarte.</p>
+      <span class="final-signature">Con todo mi amor, para ti. ♡</span>
+    </div>
+  </div>
+
+  <div class="planet-zoom" id="planetZoom" aria-hidden="true"><span class="surface"></span></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <audio id="backgroundMusic" src="fotos/musica.mp3" loop preload="none"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
